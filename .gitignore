@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Allow specific directories
+!k8/
+!scripts/
+
+# Allow the .gitignore file itself
+!.gitignore
+
