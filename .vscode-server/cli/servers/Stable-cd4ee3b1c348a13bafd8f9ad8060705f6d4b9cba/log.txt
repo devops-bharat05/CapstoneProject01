@@ -1,0 +1,30 @@
+*
+* Visual Studio Code Server
+*
+* By using the software, you agree to
+* the Visual Studio Code Server License Terms (https://aka.ms/vscode-server-license) and
+* the Microsoft Privacy Statement (https://privacy.microsoft.com/en-US/privacystatement).
+*
+Server bound to /tmp/code-a2805390-568b-487f-a678-6b133ee8ff79
+Extension host agent listening on /tmp/code-a2805390-568b-487f-a678-6b133ee8ff79
+
+[07:19:39] 
+
+
+
+
+[07:19:39] Extension host agent started.
+[07:19:39] Started initializing default profile extensions in extensions installation folder. file:///home/ubuntu/.vscode-server/extensions
+[07:19:39] Completed initializing default profile extensions in extensions installation folder. file:///home/ubuntu/.vscode-server/extensions
+[07:19:39] [<unknown>][1a29c030][ManagementConnection] New connection established.
+[07:19:39] [<unknown>][fd121438][ExtensionHostConnection] New connection established.
+[07:19:40] [<unknown>][fd121438][ExtensionHostConnection] <2119> Launched Extension Host Process.
+[07:19:47] [<unknown>][1a29c030][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[07:19:47] [<unknown>][fd121438][ExtensionHostConnection] <2119> Extension Host Process exited with code: 0, signal: null.
+Cancelling previous shutdown timeout
+[07:19:47] Cancelling previous shutdown timeout
+Last EH closed, waiting before shutting down
+[07:19:47] Last EH closed, waiting before shutting down
+[07:19:54] [<unknown>][a7e3964d][ManagementConnection] New connection established.
+[07:19:54] [<unknown>][0cd7c785][ExtensionHostConnection] New connection established.
+[07:19:54] [<unknown>][0cd7c785][ExtensionHostConnection] <2302> Launched Extension Host Process.
