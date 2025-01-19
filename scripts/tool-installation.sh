@@ -1,19 +1,24 @@
-
 #!/bin/bash
-echo ""
-ehco "############### Updating ###############"
-sudo apt-get update
-sudo apt install unzip
 
-echo""
+# Define the log file
+LOG_FILE="installation_log.txt"
+
+# Start logging
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo ""
+echo "############### Updating ###############"
+sudo apt-get update
+sudo apt install unzip -y
+
+echo ""
 echo "############### Installing Tree util ###############"
 sudo apt install tree -y
 
 echo ""
 echo "############### Installing Docker ###############"
 sudo apt install docker.io -y
-sudo systemctl status jenkins | grep -C 2 "active"
-
+#sudo systemctl status jenkins | grep -C 2 "active"
 
 echo ""
 echo "############### Add jenkins user to Docker group ###############"
@@ -34,9 +39,9 @@ sudo systemctl restart docker
 
 echo ""
 echo "############### Installing Docker buildx ###############"
-sudo apt install docker-buildx
+sudo apt install docker-buildx -y
 
-#AWS CLI Installation
+# AWS CLI Installation
 echo ""
 echo "############### Installing AWS CLI ###############"
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -44,7 +49,7 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm -rf awscliv2.zip aws/
 
-#Helm Installation
+# Helm Installation
 echo ""
 echo "############### Installing Helm ###############"
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -52,7 +57,7 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 rm -f get_helm.sh
 
-#eksctl Installation
+# eksctl Installation
 echo ""
 echo "############### Installing eksctl ###############"
 ARCH=amd64
@@ -74,6 +79,20 @@ mkdir -p ~/.local/bin
 mv ./kubectl ~/.local/bin/kubectl
 rm -f kubectl kubectl.sha256
 
+# Terraform Installation
+echo ""
+echo "############### Installing Terraform ###############"
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+
+echo " Installing  the HashiCorp GPG key......"
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+
+echo " Verify the key's fingerprint....."
+gpg --no-default-keyring  --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update
+sudo apt-get install terraform -y
+
 # Validate Installations
 echo ""
 echo "############### Validating installations ###############"
@@ -81,5 +100,6 @@ echo "AWS CLI Version: $(aws --version)"
 echo "Helm Version: $(helm version --short)"
 echo "eksctl Version:  $(eksctl version)"
 echo "kubectl Version: $(kubectl version --client)"
+echo "Terraform Version: $(terraform --version | head -n 1)"
 echo ""
 echo "Installation of all tools completed successfully!"

@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: travel-memory  																##need to change cluster name
+  region: us-west-2
+  version: "1.31"
+
+nodeGroups:
+  - name: my-node-group
+    instanceType: t2.micro
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 1
+    tags:
+      Environment: Production
+    privateNetworking: false
