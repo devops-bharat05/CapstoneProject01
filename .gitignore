@@ -1,5 +1,3 @@
-# Ignore Terraform cache files
-.terraform/
-*.tfstate
-*.tfstate.*
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b1bc7d04e6409132ec63086c04b035014c50ebc26f4598c26fda6571c4c386eb
+size 65
